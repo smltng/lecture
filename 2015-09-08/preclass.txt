@@ -21,22 +21,24 @@ something into an already-full cache.
 1. Suppose 16N is significantly larger than the size of our L3 cache. What is
 the memory-based AI of this code? (Hint: What is the memory-based AI of just the
 innermost loop?)
-
+1 flop per double load
 
 2. Now suppose that the cache is substantially larger than 16N, but
 substantially smaller than 8N^2. What is the AI now?
-
+2 flop per double load (we can reuse A so two flops per transfer)
 
 3. Now suppose the cache is large enough to hold all of A, B, and C. What is the
 AI now? (Hint: Writing to a byte of memory not already in the cache incurs two
 memory transfers: one to move the data to the cache for writing, and one to move
 the written data back to main memory.)
-
+N  (two n-cubed double precision flops and two n-squared sized input matrices)
 
 4. Cache overflowing. On my CPU (Intel i7-4700 HQ), L1, L2, and L3 caches are 32
 KB, 256 KB, and 6 MB respectively. What is the largest problem size N that will
 fit in each cache? What is the arithmetic intensity associated with each problem
 size?
+
+6MB L3 cache - sqrt(1 mil/2)
 
 
 5. My CPU has 4 cores, each of which can do 8 fused multiply-adds per cycle, has

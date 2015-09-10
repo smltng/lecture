@@ -3,12 +3,30 @@
    host cores are used, for the moment).  How do things change with
    the addition of the two Phi boards?
 
+
+|
+|       -------------------------peak DP
+|      /  /
+|     /  /<-- without memory affinity
+|    /  /
+|   /  /
+|  /<--peak stream bandwidth
+| /  /
+|/  /
+----------------------------------------
+
+
+
 2. What is the difference between two cores and one core with
    hyperthreading?
+
+Two cores means that there are actually two physically distinct cores whereas hyperthreading means taht there's one core divided into two virtual thread pipelines.
 
 3. Do a Google search to find a picture of how memories are arranged
    on the Phi architecture.  Describe the setup briefly in your own
    words.  Is the memory access uniform or non-uniform?
+
+Memories are arranged in a ring, with cores and L2 on the outer ring, and TD on the inner right. Memory access is non-uniform.
 
 4. Consider the parallel dot product implementations suggested in the
    slides.  As a function of the number of processors, the size of the

@@ -12,11 +12,17 @@ with questions for class!
     in your calculation.  (We will return to this question again after
     we cover some computer architecture.)
     
+    --from last time--
+
 2.  What is the approximate theoretical peak flop rate for your own machine?
+
+    --from last time--
 
 3.  Suppose there are t tasks that can be executed in a pipeline
     with p stages.  What is the speedup over serial execution of the
     same tasks?
+
+    p/n?
 
 4.  Consider the following list of tasks (assume they can't be pipelined):
 
@@ -30,6 +36,8 @@ with questions for class!
     What is the minimum serial time between starting to compile and having
     a compiled application?  What is the minimum parallel time given
     an arbitrary number of processors?
+
+1 hr + 0.5 hr (OpenBLAS can run in parallel with OpenMPI so I'm taking the longer of the two) + 0.5 hr + 0.5 hr = 2.5hr
 
 5.  Clone the membench repository from GitHub:
 
