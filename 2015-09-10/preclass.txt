@@ -3,6 +3,9 @@
    host cores are used, for the moment).  How do things change with
    the addition of the two Phi boards?
 
+Operation rates (performance)
+|
+v
 
 |
 |       -------------------------peak DP
@@ -13,7 +16,7 @@
 |  /<--peak stream bandwidth
 | /  /
 |/  /
-----------------------------------------
+---------------------------------------- AI (operational intensity)
 
 
 
