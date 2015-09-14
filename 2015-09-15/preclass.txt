@@ -8,11 +8,24 @@ the glider pattern for a few generations.
 1.  What are one or two points that you found least clear in the
     9/15 slide decks (including the narration)?
 
+    Game of Life slide #3: does the cyan color mean that all processors have to communicate that information with each other? Or is there something more specific (like if the cells are only between P0 and P1, only P0 and P1 will talk)?
+
 2.  In the basic implementation provided, what size board for the Game
     of Life would fit in L3 cache for one of the totient nodes?  Add a
     timer to the code and run on the totient node.  How many cells per
     second can we update for a board that fits in L3 cache?  For a
     board that does not fit?
+
+    https://sites.utexas.edu/jdm4372/2012/11/17/some-comments-on-the-xeon-phi-coprocessor/
+
+    Is this a trick questions? There's no L3 cache...?
+
+    --
+    http://www.newegg.com/Product/Product.aspx?Item=N82E16819116934
+
+    (assuming we're not in the head node) 15MB L3 cache - * 2 = 30MB L3 cache
+
+    Each cell is a char, each char is one byte, so 30000000?
 
 3.  Assuming that we want to advance time by several generations,
     suggest a blocking strategy that would improve the operational
@@ -21,10 +34,15 @@ the glider pattern for a few generations.
     want to try your hand at implementing your strategy (though you
     need not spend too much time on it).
 
+    As mentioned in the lecture slides, I would try to divide the board into N parts where N is the number of processors I have. Each of the N divisions would be handled by each processor and none of the others, but the blocks on the edge of the N divisions would be communicated to processors so they know when the cells are going to migrate from one processor to another.
+
 4.  Comment on what would be required to parallelize this code
     according to the domain decomposition strategy outlined in the
     slides.  Do you think you would see good speedups on one of
     the totient nodes?  Why or why not?
+
+    OpenMPI, a bunch of nodes...? Not quite sure what this question is asking for. 
+    But I think there could be good speedups on the totient nodes since each processor doesn't have to wait before calculating the next iteration in the cycle of life. The only thing I'd be worried about is if communicating when each cell is on the border costs a lot of time...
 
 5.  Suppose we want to compute long-range interactions between two
     sets of particles in parallel using the obvious n^2 algorithm in a
@@ -49,3 +67,7 @@ the glider pattern for a few generations.
     Based on what you know about memories and parallel architecture,
     do you see any features of this approach that are likely to lead
     to poor performance?
+
+    From the slides: (load balancing, corner cases, what happens if particles collide, step control, time integrator) 
+
+    Locality in computations might be an issue, as you'd need to keep track of how far particles are away from each other.
