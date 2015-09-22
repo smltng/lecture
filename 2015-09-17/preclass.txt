@@ -5,10 +5,12 @@ than on the numerical analysis, but I am working under the assumption
 that you can figure out the numerical jargon.
 
 0.  How much time did you spend on this pre-class exercise, and when?
+    Unfortunately, I have an interview that I've been cramming for and haven't been able to put in as much time as I'd have liked into this... 
 
 1.  What are one or two points that you found least clear in the
     9/17 slide decks (including the narration)?
-
+    The audio wasn't working when I tried it at 1:28 am Sept 17th? Not sure if it's because of my laptop or if there's no sound.
+    
 2.  Fill in the most straightforward implementation you can think of
     for multiplying a compressed sparse row matrix by a vector.
     Note: It is fine to look up the answer elsewhere!  If you do,

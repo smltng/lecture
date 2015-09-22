@@ -25,9 +25,9 @@ the glider pattern for a few generations.
     --
     http://www.newegg.com/Product/Product.aspx?Item=N82E16819116934
 
-    (assuming we're not in the head node) 15MB L3 cache - * 2 = 30MB L3 cache
+    (assuming we're not in the head node) 15MB
 
-    Each cell is a char, each char is one byte, so 30000000?
+    Each cell is a char, each char is one byte, so around 15 million bytes total storage. Sqrt(15mil) is the amount on one side.
 
 3.  Assuming that we want to advance time by several generations,
     suggest a blocking strategy that would improve the operational
