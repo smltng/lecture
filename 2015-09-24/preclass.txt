@@ -1,7 +1,11 @@
 0.  How much time did you spend on this pre-class exercise, and when?
 
+    Total two hours split across the day, mostly because I kept getting interrupted while watching the slides.
+
 1.  What are one or two points that you found least clear in the
     9/24 slide decks (including the narration)?
+
+    I was a little confused about spin locks from the narration. 
 
 2.  The omp_mc.c file in the demo subdirectory runs a Monte Carlo
     simulation to estimate the expected value of a uniform random
@@ -12,17 +16,37 @@
        terms of the number of trials (N), number of processors (p),
        time per trial (t_trial), and time to update the global
        counters in the critical section (t_update).
+    
+    Is this the same thing as last time? 
+ 
+    I realized I did this wrong earlier, because this needs Amdahl's Law.
 
+    S(n) = 1/(B+1/n(1-B))
+
+    From Wikipedia: B is the fraction of the algorithm that is strictly serial
+
+    Strictly serial portion is t_update (time it takes to update the global counters in the critical section)
+
+    Total portion is t_trial * N + t_update, so B = t_update/(t_trial * N + t_update)
+
+    S(n) = 1/(t_update/(t_trial*N+t_update)+1/n(1-(t_update/(t_trial*N+t_update))))
+    
     b) Run the code with a few different parameter values in order
        to estimate N, t_trial, and t_update for this code on
        a totient compute node.
+
+       I can't find the file in the subdirectory...?
 
     c) Based on your model, suggest a strategy for choosing the batch
        size.  How might you generalize this strategy to automatically
        choose batch sizes for different types of computational
        experiments?
 
+       I would do the same thing as last time where I pick a batch size such that the amount of time it takes for the slowest processor doesn't cause the serial case to run faster.
+
 3.  The "OpenMP pitfalls" paper describes some common pitfalls (both
     performance and correctness) in OpenMP codes.  Go through the
     checklist in the paper for omp_mc.c.  What performance mistakes
     are there in the demonstration implementation?
+
+    Can't find the demonstration implementation in the repo :(

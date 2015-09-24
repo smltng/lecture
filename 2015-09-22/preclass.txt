@@ -14,11 +14,19 @@
        terms of the number of trials (N), number of processors (p),
        time per trial (t_trial), and time to update the global
        counters in the critical section (t_update).
-
-       t_update is parallelized so those run while t_trial is running
        
-       (max(t_trial,t_update * p) + t_update ) * N
+    I realized I did this wrong earlier, because this needs Amdahl's Law.
 
+    S(n) = 1/(B+1/n(1-B))
+    
+    From Wikipedia: B is the fraction of the algorithm that is strictly serial
+
+    Strictly serial portion is t_update (time it takes to update the global counters in the critical section)
+
+    Total portion is t_trial * N + t_update, so B = t_update/(t_trial * N + t_update)
+
+    S(n) = 1/(t_update/(t_trial*N+t_update)+1/n(1-(t_update/(t_trial*N+t_update))))
+    
     b) Run the code with a few different parameter values in order
        to estimate N, t_trial, and t_update for this code on
        a totient compute node.
