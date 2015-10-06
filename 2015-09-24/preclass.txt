@@ -35,8 +35,6 @@
        to estimate N, t_trial, and t_update for this code on
        a totient compute node.
 
-       I can't find the file in the subdirectory...?
-
     c) Based on your model, suggest a strategy for choosing the batch
        size.  How might you generalize this strategy to automatically
        choose batch sizes for different types of computational
@@ -49,4 +47,4 @@
     checklist in the paper for omp_mc.c.  What performance mistakes
     are there in the demonstration implementation?
 
-    Can't find the demonstration implementation in the repo :(
+    According to the paper (number 11. "Use of critical when atomic would be sufficient."), in main, #pragma omp critical could be changed to a barrier.
